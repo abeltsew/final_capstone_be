@@ -13,10 +13,4 @@ Rails.application.routes.draw do
     end
   end
 
-  # namespace :API do
-  #   namespace :V1 do
-  #     get '/login', to: 'users#login'
-  #   end
-  # end
-
 end
