@@ -1,6 +1,11 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/rooms', type: :request do
+  before(:each) do
+    @user = User.create(username: 'johnd')
+    @room = Room.create(name: 'King size', user: @user, price: 456, description: 'description')
+  end
+
   path '/api/v1/rooms' do
     get('list rooms') do
       response(200, 'successful') do
@@ -14,11 +19,13 @@ RSpec.describe 'api/v1/rooms', type: :request do
         run_test!
       end
     end
+  end
 
+  path '/api/v1/rooms' do
     post('create room') do
       consumes 'application/json'
       produces 'application/json'
-
+      let(:room) { @room }
       parameter name: :room, in: :body, schema: {
         type: :object,
         properties: {
@@ -30,18 +37,18 @@ RSpec.describe 'api/v1/rooms', type: :request do
         required: %w[name description price user_id]
       }
 
-      response(200, 'successful') do
+      response(201, 'successful') do
         schema type: :object,
                properties: {
                  id: { type: :integer },
                  name: { type: :string },
                  description: { type: :string },
-                 price: { type: :number },
+                 price: { type: :string },
                  user_id: { type: :integer },
                  created_at: { type: :string, format: 'date-time' },
                  updated_at: { type: :string, format: 'date-time' }
                },
-               required: %w[id name description price user_id created_at updated_at]
+               required: %w[id name description price user_id]
 
         run_test!
       end
@@ -54,52 +61,7 @@ RSpec.describe 'api/v1/rooms', type: :request do
 
     get('show room') do
       response(200, 'successful') do
-        let(:id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-
-    patch('update room') do
-      response(200, 'successful') do
-        let(:id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-
-    put('update room') do
-      response(200, 'successful') do
-        let(:id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-
-    delete('delete room') do
-      response(200, 'successful') do
-        let(:id) { '123' }
+        let(:id) { @room.id }
 
         after do |example|
           example.metadata[:response][:content] = {

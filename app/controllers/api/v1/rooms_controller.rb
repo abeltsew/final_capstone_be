@@ -11,12 +11,19 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create(room_params)
+    # @room = Room.create(room_params)
+
+    # if @room.save
+    #   render json: { message: 'Room created successfully' }, status: :created
+    # else
+    #   render json: { message: 'Room creation failed' }, status: :unprocessable_entity
+    # end
+    @room = Room.new(room_params)
 
     if @room.save
-      render json: { message: 'Room created successfully' }, status: :created
+      render json: @room, status: :created
     else
-      render json: { message: 'Room creation failed' }, status: :unprocessable_entity
+      render json: { errors: @room.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

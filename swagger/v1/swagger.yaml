@@ -4,7 +4,7 @@ info:
   title: API V1
   version: v1
 paths:
-  '/api/v1/rooms':
+  "/api/v1/rooms":
     get:
       summary: list rooms
       responses:
@@ -14,7 +14,7 @@ paths:
       summary: create room
       parameters: []
       responses:
-        '200':
+        '201':
           description: successful
           content:
             application/json:
@@ -28,7 +28,7 @@ paths:
                   description:
                     type: string
                   price:
-                    type: number
+                    type: string
                   user_id:
                     type: integer
                   created_at:
@@ -38,13 +38,11 @@ paths:
                     type: string
                     format: date-time
                 required:
-                  - id
-                  - name
-                  - description
-                  - price
-                  - user_id
-                  - created_at
-                  - updated_at
+                - id
+                - name
+                - description
+                - price
+                - user_id
       requestBody:
         content:
           application/json:
@@ -60,35 +58,20 @@ paths:
                 user_id:
                   type: integer
               required:
-                - name
-                - description
-                - price
-                - user_id
-  '/api/v1/rooms/{id}':
+              - name
+              - description
+              - price
+              - user_id
+  "/api/v1/rooms/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show room
-      responses:
-        '200':
-          description: successful
-    patch:
-      summary: update room
-      responses:
-        '200':
-          description: successful
-    put:
-      summary: update room
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete room
       responses:
         '200':
           description: successful
