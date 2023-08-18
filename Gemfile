@@ -13,6 +13,8 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 
 gem 'rack-cors'
+
+gem 'rswag'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
