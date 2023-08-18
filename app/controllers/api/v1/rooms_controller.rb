@@ -11,13 +11,6 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def create
-    # @room = Room.create(room_params)
-
-    # if @room.save
-    #   render json: { message: 'Room created successfully' }, status: :created
-    # else
-    #   render json: { message: 'Room creation failed' }, status: :unprocessable_entity
-    # end
     @room = Room.new(room_params)
 
     if @room.save
