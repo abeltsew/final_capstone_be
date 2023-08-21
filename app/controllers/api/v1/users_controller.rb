@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
 
     user = User.where(username: request['username'])
     if user.empty?
-      new_user = User.create!(username: request['username'])
+      new_user = User.create!(user_params)
       msg = {
         id: new_user.id,
         username: new_user.username,
@@ -26,5 +26,9 @@ class Api::V1::UsersController < ApplicationController
       }
     end
     render json: msg, status: :ok
+  end
+
+  def user_params
+    params.require(:user).permit(:username)
   end
 end
