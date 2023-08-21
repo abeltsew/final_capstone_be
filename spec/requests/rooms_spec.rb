@@ -48,7 +48,7 @@ RSpec.describe 'Rooms', type: :request do
       before { post '/api/v1/rooms', params: { room: { name: 'Invalid Room' } } }
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/Room creation failed/)
+        expect(response.body).to match(/User must exist/)
       end
     end
   end
