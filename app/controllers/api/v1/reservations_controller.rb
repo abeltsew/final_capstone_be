@@ -2,8 +2,7 @@ class Api::V1::ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[show update destroy]
 
   def create
-    @reservation = Reservation.new(reservation_params.merge(user_id: params[:user_id]))
-
+    @reservation = Reservation.new(reservation_params)
     if @reservation.save
       render json: @reservation, status: :created
     else
@@ -23,6 +22,6 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:room_id, :date, :city_id)
+    params.require(:reservation).permit(:room_id, :date, :city_id, :user_id)
   end
 end
