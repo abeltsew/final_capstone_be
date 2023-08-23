@@ -30,7 +30,7 @@ class Api::V1::RoomsController < ApplicationController
       msg = {
         id: params[:id],
         name: params[:name],
-        msg: "room not found",
+        message: "room not found",
         room_list: Room.all
       }
       render json: msg, status: :ok
