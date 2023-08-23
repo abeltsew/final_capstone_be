@@ -12,7 +12,16 @@ class Api::V1::ReservationsController < ApplicationController
 
   def index
     @user_reservations = Reservation.where(user_id: params[:user_id])
-    render json: @user_reservations
+    @reservations_info = []
+    @user_reservations.each do |reservation|
+      @reservations_info.push({
+                                user: reservation.user.username,
+                                room: reservation.room.name,
+                                city: reservation.city.name,
+                                date: reservation.date
+                              })
+    end
+    render json: @reservations_info
   end
 
   private
