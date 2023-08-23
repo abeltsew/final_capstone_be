@@ -23,6 +23,7 @@ class Api::V1::ReservationsController < ApplicationController
     end
     render json: @reservations_info
   end
+
   private
 
   def set_reservation
