@@ -20,6 +20,19 @@ class Api::V1::RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+    render json: @room, status: :ok if @room.destroy
+  rescue StandardError
+    msg = {
+      id: params[:id],
+      name: params[:name],
+      message: 'room not found',
+      room_list: Room.all
+    }
+    render json: msg, status: :ok
+  end
+
   private
 
   def room_params
