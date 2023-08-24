@@ -37,6 +37,7 @@ rooms = []
     name: "Room #{i + 1}",
     user: users.sample,
     image: images.sample,
+    active: true,
     price: rand(50..300),
     description: "Description for Room #{i + 1}"
   )

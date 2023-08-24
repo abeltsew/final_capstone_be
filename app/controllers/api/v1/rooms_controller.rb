@@ -22,7 +22,8 @@ class Api::V1::RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:id])
-    render json: @room, status: :ok if @room.destroy
+    @room.active = false
+    render json: @room, statis: :ok if @room.save
   rescue StandardError
     msg = {
       id: params[:id],
@@ -36,6 +37,6 @@ class Api::V1::RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name, :image, :description, :price, :user_id)
+    params.require(:room).permit(:name, :image, :active, :description, :price, :user_id)
   end
 end
