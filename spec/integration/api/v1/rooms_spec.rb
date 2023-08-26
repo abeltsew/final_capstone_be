@@ -33,8 +33,7 @@ RSpec.describe 'api/v1/rooms', type: :request do
           price: { type: :number },
           image: { type: :string },
           user_id: { type: :integer }
-        },
-        required: %w[name description price user_id]
+        }
       }
 
       response(201, 'successful') do
