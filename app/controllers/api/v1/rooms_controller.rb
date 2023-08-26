@@ -23,7 +23,7 @@ class Api::V1::RoomsController < ApplicationController
   def destroy
     @room = Room.find(params[:id])
     @room.active = false
-    render json: @room, statis: :ok if @room.save
+    render json: @room, status: :ok if @room.save
   rescue StandardError
     msg = {
       id: params[:id],
