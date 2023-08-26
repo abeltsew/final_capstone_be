@@ -3,7 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/reservations', type: :request do
   before(:each) do
     @user = User.create(username: 'johnd')
-    @room = Room.create(name: 'King size', user: @user, price: 456)
+    @room = Room.create(name: 'King size', user_id: @user.id, price: 456, description: 'King size', image: 'http://')
     @city = City.create(name: 'London')
     @reservation = Reservation.create(room_id: @room.id, user_id: @user.id, date: Date.today, city_id: @city.id)
   end
