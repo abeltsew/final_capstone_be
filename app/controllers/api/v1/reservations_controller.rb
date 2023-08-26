@@ -15,6 +15,7 @@ class Api::V1::ReservationsController < ApplicationController
     @reservations_info = []
     @user_reservations.each do |reservation|
       @reservations_info.push({
+                                id: reservation.id,
                                 user: reservation.user.username,
                                 room: reservation.room.name,
                                 city: reservation.city.name,
