@@ -3,9 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/rooms', type: :request do
   before(:each) do
     @user = User.create(username: 'johnd')
-    @room = Room.create(name: 'King size', user: @user, price: 456, description: 'description')
+    @room = Room.create(name: 'King size', user: @user, price: 456, description: 'King size', image: 'http://')
   end
-
   path '/api/v1/rooms' do
     get('list rooms') do
       response(200, 'successful') do
@@ -32,6 +31,7 @@ RSpec.describe 'api/v1/rooms', type: :request do
           name: { type: :string },
           description: { type: :string },
           price: { type: :number },
+          image: { type: :string },
           user_id: { type: :integer }
         },
         required: %w[name description price user_id]
@@ -44,6 +44,7 @@ RSpec.describe 'api/v1/rooms', type: :request do
                  name: { type: :string },
                  description: { type: :string },
                  price: { type: :string },
+                 image: { type: :string },
                  user_id: { type: :integer },
                  created_at: { type: :string, format: 'date-time' },
                  updated_at: { type: :string, format: 'date-time' }
