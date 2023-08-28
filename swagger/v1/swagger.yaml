@@ -4,15 +4,15 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/reservations":
+  '/api/v1/reservations':
     get:
       summary: list reservations
       parameters:
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: successful
@@ -42,10 +42,10 @@ paths:
                     type: string
                     format: date-time
                 required:
-                - city_id
-                - room_id
-                - date
-                - user_id
+                  - city_id
+                  - room_id
+                  - date
+                  - user_id
       requestBody:
         content:
           application/json:
@@ -61,11 +61,11 @@ paths:
                 user_id:
                   type: integer
               required:
-              - city_id
-              - room_id
-              - date
-              - user_id
-  "/api/v1/rooms":
+                - city_id
+                - room_id
+                - date
+                - user_id
+  '/api/v1/rooms':
     get:
       summary: list rooms
       responses:
@@ -90,6 +90,8 @@ paths:
                     type: string
                   price:
                     type: string
+                  image:
+                    type: string
                   user_id:
                     type: integer
                   created_at:
@@ -99,11 +101,11 @@ paths:
                     type: string
                     format: date-time
                 required:
-                - id
-                - name
-                - description
-                - price
-                - user_id
+                  - id
+                  - name
+                  - description
+                  - price
+                  - user_id
       requestBody:
         content:
           application/json:
@@ -116,28 +118,30 @@ paths:
                   type: string
                 price:
                   type: number
+                image:
+                  type: string
                 user_id:
                   type: integer
-              required:
-              - name
-              - description
-              - price
-              - user_id
-  "/api/v1/rooms/{id}":
+  '/api/v1/rooms/{id}':
     parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
     get:
       summary: show room
       responses:
         '200':
           description: successful
+    delete:
+      summary: Deactivate room
+      responses:
+        '200':
+          description: successful
 servers:
-- url: http://{defaultHost}
-  variables:
-    defaultHost:
+  - url: http://{defaultHost}
+    variables:
+      defaultHost:
         default: localhost:3000

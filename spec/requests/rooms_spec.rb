@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Rooms', type: :request do
   before(:each) do
     @user = User.create(username: 'johnd')
-    @room = Room.create(name: 'King size', user: @user, price: 456)
+    @room = Room.create(name: 'King size', user: @user, price: 456, description: 'King size', image: 'http://')
   end
 
   describe 'GET /index' do
@@ -31,7 +31,8 @@ RSpec.describe 'Rooms', type: :request do
           name: 'from Api',
           description: 'description from Api',
           price: 783,
-          user_id: @user.id
+          user_id: @user.id,
+          image: 'image'
         }
       }
     end

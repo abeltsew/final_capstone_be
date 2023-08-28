@@ -3,9 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/rooms', type: :request do
   before(:each) do
     @user = User.create(username: 'johnd')
-    @room = Room.create(name: 'King size', user: @user, price: 456, description: 'description')
+    @room = Room.create(name: 'King size', user: @user, price: 456, description: 'King size', image: 'http://')
   end
-
   path '/api/v1/rooms' do
     get('list rooms') do
       response(200, 'successful') do
@@ -32,9 +31,9 @@ RSpec.describe 'api/v1/rooms', type: :request do
           name: { type: :string },
           description: { type: :string },
           price: { type: :number },
+          image: { type: :string },
           user_id: { type: :integer }
-        },
-        required: %w[name description price user_id]
+        }
       }
 
       response(201, 'successful') do
@@ -44,6 +43,7 @@ RSpec.describe 'api/v1/rooms', type: :request do
                  name: { type: :string },
                  description: { type: :string },
                  price: { type: :string },
+                 image: { type: :string },
                  user_id: { type: :integer },
                  created_at: { type: :string, format: 'date-time' },
                  updated_at: { type: :string, format: 'date-time' }
@@ -60,6 +60,26 @@ RSpec.describe 'api/v1/rooms', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show room') do
+      response(200, 'successful') do
+        let(:id) { @room.id }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/rooms/{id}' do
+    # You'll want to customize the parameter types...
+    parameter name: 'id', in: :path, type: :string, description: 'id'
+
+    delete('Deactivate room') do
       response(200, 'successful') do
         let(:id) { @room.id }
 
