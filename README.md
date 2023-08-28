@@ -30,6 +30,8 @@
 **SummerWave Hotels** is a website to reserve rooms for the SummerWave Hotel chains. You can select available rooms from a gaphic list in the home page of the website, or you can just click on the reserve menu item and see the full list of available rooms and the city in which they are available. You can find the repository for the [front end ](https://github.com/dev89s/final-capstone-front-end)here.
 
 Backend is implemented as API-only. The front end is implemented utilizing the React framework.
+
+You can find the setup of the Kanban board [here](https://github.com/abeltsew/final_capstone_be/issues/13).
 ## 🛠 Built With <a id="built-with"></a>
 
 ### Tech Stack <a id="tech-stack"></a>
