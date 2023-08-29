@@ -9,7 +9,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
-  - [🎬 Representation](#representation)
+  - [Kanban Board](#kanban)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -32,7 +32,15 @@
 
 Backend is implemented as API-only. The front end is implemented utilizing the React framework.
 
-You can find the setup of the Kanban board [here](https://github.com/abeltsew/final_capstone_be/issues/13).
+
+The database is based on the following ERD:
+
+![Screenshot 2023-08-29 at 11 15 11 AM](https://github.com/abeltsew/final_capstone_be/assets/116716802/b3fecb1b-f66c-4b34-867a-173eb14b3f27)
+
+- The backend Rails app is implemented as API-only. The application starts by fetching the `users/start` method on the backend, if the backend is available then the user will login by making a query to `users/new_session`. 
+- The room controller provides an `index` method to get all the data for rooms, and a `show` method to get details about a specific room. The `destroy` method deactivates the room when the user sends a delete query by clicking on delete.
+- The reservation controller provides methods `create` and `index`. To create a reservation given the info (username, room name, city name, and date) the `create` method will be used. `index` is used to get a list of all made reservations.
+- The city controller (`index`) provides the list of cities in the database.
 
 ## 🛠 Built With <a id="built-with"></a>
 
@@ -64,11 +72,16 @@ You can find the documentation for the backend api [here](https://summerwave.onr
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ## 🎬 Representaition <a id="representation"></a> -->
+## 🎬 Kanban Board <a id="kanban"></a> 
 
-<!-- not added -->
+Link to the [Kanban Board](https://github.com/abeltsew/final_capstone_be/projects/1)
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+All 4 Authors have been contributing to this project from start to finish
+
+You can find the initial snapshot and setup of the Kanban board [here](https://github.com/abeltsew/final_capstone_be/issues/13).
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p> 
 
 <!-- GETTING STARTED -->
 
