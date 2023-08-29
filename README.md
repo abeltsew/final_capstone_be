@@ -82,9 +82,8 @@ In order to run this project you need:
 
 - Install Ruby
 - Install Rails
-<!-- - Install Rspec -->
 - Install Postgresql
-<!-- - Install React -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Setup
 
@@ -96,12 +95,16 @@ git clone https://github.com/abeltsew/final_capstone_be.git
 
 ### Install
 
-Install this project with:
+Install this project with these commands:
 
 ```
   cd final_capstone_be
   bundle install
+  rails db:create
+  rails db:migrate
+  rails db:seed
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Usage
 
@@ -116,12 +119,23 @@ or
 ```
 ./bin/dev
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Deployment <a id="triangular_flag_on_post-deployment"></a>
+## Tests
+
+To run the tests, the following command should be executed:
+
+```
+  rspec spec
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ### Deployment <a id="triangular_flag_on_post-deployment"></a>
 
 - [N/A]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- AUTHORS -->
 
